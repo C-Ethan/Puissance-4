@@ -28,7 +28,8 @@ export class Game {
     updateStatus() {
         const statusDiv = document.getElementById('current-player');
         if (statusDiv) {
-            statusDiv.innerText = `Tour du joueur ${this.getCurrentPlayer().id}`;
+            const player = this.getCurrentPlayer();
+            statusDiv.innerText = `Tour du joueur ${player.id}`;
         }
     }
 

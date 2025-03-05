@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Puissance 4</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div id="game-container">
-      <h1 id="game-title">Puissance 4</h1>
-      <div id="player-names">
-        <input type="text" placeholder="Nom du joueur 1" id="player1-name" />
-        <input type="text" placeholder="Nom du joueur 2" id="player2-name" />
-      </div>
-      <div id="color-picker">
-        <label for="player1-color">Couleur du joueur 1 : </label>
-        <input type="color" id="player1-color" name="player1-color" value="#e63946">
-    
-        <label for="player2-color">Couleur du joueur 2 : </label>
-        <input type="color" id="player2-color" name="player2-color" value="#f1c40f">
-    </div>    
-      <table id="board"></table>
-      <div id="current-player"></div>
-      <div id="game-over" style="display: none"></div>
+        <h1 id="game-title">Puissance 4</h1>
+        <div id="player-names">
+            <input type="text" placeholder="Nom du joueur 1" id="player1-name" />
+            <input type="text" placeholder="Nom du joueur 2" id="player2-name" />
+        </div>
+        <div id="color-picker">
+            <label for="player1-color">Couleur du joueur 1 : </label>
+            <input type="color" id="player1-color" name="player1-color" value="#e63946">
+
+            <label for="player2-color">Couleur du joueur 2 : </label>
+            <input type="color" id="player2-color" name="player2-color" value="#f1c40f">
+        </div>
+        <button id="start-button">Commencer la partie</button>
+        <table id="board" style="display: none;"></table>
+        <div id="current-player"></div>
+        <div id="game-over" style="display: none"></div>
     </div>
     <script type="module" src="assets/js/index.js"></script>
-  </body>
+</body>
 </html>
