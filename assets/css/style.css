@@ -62,9 +62,9 @@ body {
 #color-picker {
   margin: 20px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 }
 
 #color-picker label {
