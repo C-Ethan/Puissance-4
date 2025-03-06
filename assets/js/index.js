@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startButton.style.display = 'none';
 
             document.getElementById('board').style.display = 'table';
-        } else {
-            alert('Veuillez choisir les couleurs pour les deux joueurs.');
         }
     });
 });
