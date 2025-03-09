@@ -9,6 +9,7 @@ export class Game {
       new Player(2, player2Color, player2Name),
     ];
     this.currentPlayerIndex = 0;
+    this.gameHistory = [];
   }
 
   init() {
@@ -37,5 +38,37 @@ export class Game {
     this.board.grid = this.board.createGrid();
     this.board.drawBoard();
     this.updateStatus();
+  }
+
+  recordGameResult(winnerName) {
+    this.gameHistory.push({ winner: winnerName });
+    this.displayGameHistory();
+
+    const resetButton = document.getElementById('reset-history-button');
+    if (resetButton) {
+      resetButton.style.display = 'inline-block';
+    }
+  }
+
+  resetGameHistory() {
+    this.gameHistory = [];
+    this.displayGameHistory();
+
+    const resetButton = document.getElementById('reset-history-button');
+    if (resetButton) {
+      resetButton.style.display = 'none';
+    }
+  }
+
+  displayGameHistory() {
+    const historyEntriesDiv = document.getElementById("history-entries");
+    if (historyEntriesDiv) {
+      historyEntriesDiv.innerHTML = "";
+      this.gameHistory.forEach((result, index) => {
+        const resultElement = document.createElement("p");
+        resultElement.innerText = `Partie ${index + 1} : Gagné par ${result.winner}`;
+        historyEntriesDiv.appendChild(resultElement);
+      });
+    }
   }
 }
