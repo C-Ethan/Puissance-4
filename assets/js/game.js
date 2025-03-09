@@ -2,11 +2,11 @@ import { Board } from './board.js';
 import { Player } from './player.js';
 
 export class Game {
-    constructor(rows, cols, player1Color, player2Color) {
+    constructor(rows, cols, player1Color, player2Color, player1Name, player2Name) {
         this.board = new Board(rows, cols, this);
         this.players = [
-            new Player(1, player1Color),
-            new Player(2, player2Color),
+            new Player(1, player1Color, player1Name),
+            new Player(2, player2Color, player2Name),
         ];
         this.currentPlayerIndex = 0;
     }
@@ -29,7 +29,7 @@ export class Game {
         const statusDiv = document.getElementById('current-player');
         if (statusDiv) {
             const player = this.getCurrentPlayer();
-            statusDiv.innerText = `Tour du joueur ${player.id}`;
+            statusDiv.innerText = `Tour de ${player.name}`;
         }
     }
 
