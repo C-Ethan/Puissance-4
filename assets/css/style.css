@@ -145,3 +145,39 @@ td:hover {
 #restart-button:hover {
   background-color: #e67e22;
 }
+
+#game-history {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#game-history h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+#history-entries p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+#reset-history-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+}
+
+#reset-history-button:hover {
+  background-color: #e67e22;
+}

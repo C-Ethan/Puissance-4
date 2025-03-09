@@ -41,18 +41,33 @@ export class Game {
   }
 
   recordGameResult(winnerName) {
-    this.gameHistory.push({winner : winnerName});
+    this.gameHistory.push({ winner: winnerName });
     this.displayGameHistory();
+
+    const resetButton = document.getElementById('reset-history-button');
+    if (resetButton) {
+      resetButton.style.display = 'inline-block';
+    }
+  }
+
+  resetGameHistory() {
+    this.gameHistory = [];
+    this.displayGameHistory();
+
+    const resetButton = document.getElementById('reset-history-button');
+    if (resetButton) {
+      resetButton.style.display = 'none';
+    }
   }
 
   displayGameHistory() {
-    const historyDiv = document.getElementById("game-history");
-    if (historyDiv) {
-      historyDiv.innerHTML = '<h3>Historique des parties :</h3>';
+    const historyEntriesDiv = document.getElementById("history-entries");
+    if (historyEntriesDiv) {
+      historyEntriesDiv.innerHTML = "";
       this.gameHistory.forEach((result, index) => {
-        const resultElement = document.createElement('p');
-        resultElement.innerText = `Partie ${index + 1}: Gagné par : ${result.winner}`;
-        historyDiv.appendChild(resultElement);
+        const resultElement = document.createElement("p");
+        resultElement.innerText = `Partie ${index + 1} : Gagné par ${result.winner}`;
+        historyEntriesDiv.appendChild(resultElement);
       });
     }
   }

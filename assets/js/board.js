@@ -13,15 +13,15 @@ export class Board {
   }
 
   drawBoard() {
-    const boardTable = document.getElementById('board');
-    boardTable.innerHTML = '';
+    const boardTable = document.getElementById("board");
+    boardTable.innerHTML = "";
     for (let r = 0; r < this.rows; r++) {
-      const row = document.createElement('tr');
+      const row = document.createElement("tr");
       for (let c = 0; c < this.cols; c++) {
-        const cell = document.createElement('td');
+        const cell = document.createElement("td");
         cell.dataset.row = r;
         cell.dataset.col = c;
-        cell.addEventListener('click', () => this.handleCellClick(c));
+        cell.addEventListener("click", () => this.handleCellClick(c));
         row.appendChild(cell);
       }
       boardTable.appendChild(row);
