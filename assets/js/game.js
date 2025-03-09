@@ -32,4 +32,10 @@ export class Game {
       statusDiv.innerText = `Tour de ${player.name}`;
     }
   }
+
+  restartGame() {
+    this.board.grid = this.board.createGrid();
+    this.board.drawBoard();
+    this.updateStatus();
+  }
 }

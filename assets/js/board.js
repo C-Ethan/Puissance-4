@@ -33,7 +33,7 @@ export class Board {
     const success = this.placeToken(col, playerId);
     if (success) {
       if (this.checkForWin(playerId)) {
-        alert(`le joueur ${this.game.getCurrentPlayer().name} a gagné !`);
+          this.showGameOver(this.game.getCurrentPlayer().name);
       } else {
           this.game.switchPlayer();
       }
@@ -116,5 +116,17 @@ export class Board {
     }
 
     return false;
+  }
+
+  showGameOver(winnerName) {
+    const gameOverScreen = document.getElementById("game-over");
+    const winnerMessage = document.getElementById("winner-message");
+    winnerMessage.innerText = `Félicitations, ${winnerName} a gagné !`;
+    gameOverScreen.style.display = "block";
+
+    document.getElementById("restart-button").addEventListener("click", () => {
+      this.game.restartGame();
+      gameOverScreen.style.display = "none";
+    });
   }
 }
