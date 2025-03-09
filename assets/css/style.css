@@ -17,7 +17,7 @@ body {
   overflow: hidden;
   padding: 20px;
   width: 90%;
-  max-width: 600px;
+  max-width: 800px;
   text-align: center;
 }
 
@@ -60,11 +60,11 @@ body {
 }
 
 #color-picker {
-  margin: 20px 0;
+  margin: 20px 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 }
 
 #color-picker label {
@@ -81,10 +81,8 @@ body {
 }
 
 table {
-  border-collapse: separate;
   border-spacing: 5px;
   margin: 0 auto;
-  width: 100%;
 }
 
 td {
