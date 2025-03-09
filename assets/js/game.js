@@ -43,7 +43,11 @@ export class Game {
   }
 
   recordGameResult(winnerName) {
-    this.gameHistory.push({ winner: winnerName });
+    if (winnerName) {
+      this.gameHistory.push({ winner: winnerName });
+    } else {
+      this.gameHistory.push({ winner: "Match nul" });
+    }
     this.displayGameHistory();
 
     const resetButton = document.getElementById('reset-history-button');
@@ -68,7 +72,7 @@ export class Game {
       historyEntriesDiv.innerHTML = "";
       this.gameHistory.forEach((result, index) => {
         const resultElement = document.createElement("p");
-        resultElement.innerText = `Partie ${index + 1} : Gagné par ${result.winner}`;
+        resultElement.innerText = `Partie ${index + 1} : ${result.winner}`;
         historyEntriesDiv.appendChild(resultElement);
       });
     }
