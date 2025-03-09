@@ -32,6 +32,7 @@ export class Board {
     const playerId = this.game.getCurrentPlayer().id;
     const success = this.placeToken(col, playerId);
     if (success) {
+      console.log("Updated Grid:", this.grid);
       if (this.checkForWin(playerId)) {
           this.showGameOver(this.game.getCurrentPlayer().name);
       } else {
