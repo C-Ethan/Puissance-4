@@ -30,7 +30,7 @@ export class Board {
 
   handleCellClick(col) {
     const playerId = this.game.getCurrentPlayer().id;
-    const success = this.placeToken(col, playerId);
+    const success = this.game.placeToken(col, playerId);
     if (success) {
       console.log("Updated Grid:", this.grid);
       if (this.checkForWin(playerId)) {
@@ -69,6 +69,15 @@ export class Board {
         }
       }
     }
+  }
+
+  getLastMoveRow(col) {
+    for (let r = 0; r < this.rows; r++) {
+      if (this.grid[r][col] !== 0) {
+        return r;
+      }
+    }
+    return -1;
   }
 
   checkForWin(playerId) {

@@ -10,6 +10,7 @@ export class Game {
     ];
     this.currentPlayerIndex = 0;
     this.gameHistory = [];
+    this.moveHistory = [];
   }
 
   init() {
@@ -38,6 +39,7 @@ export class Game {
     this.board.grid = this.board.createGrid();
     this.board.drawBoard();
     this.updateStatus();
+    this.moveHistory = [];
   }
 
   recordGameResult(winnerName) {
@@ -70,5 +72,25 @@ export class Game {
         historyEntriesDiv.appendChild(resultElement);
       });
     }
+  }
+
+  undoLastMove() {
+    if (this.moveHistory.length > 0) {
+        const lastMove = this.moveHistory.pop();
+        this.board.grid[lastMove.row][lastMove.col] = 0;
+        this.board.updateBoard();
+        this.switchPlayer();
+    }
+  }
+
+  placeToken(col, playerId) {
+    const success = this.board.placeToken(col, playerId);
+    if (success) {
+      const lastMoveRow = this.board.getLastMoveRow(col);
+      if (lastMoveRow !== -1) {
+        this.moveHistory.push({ row: lastMoveRow, col: col });
+      }
+    }
+    return success;
   }
 }

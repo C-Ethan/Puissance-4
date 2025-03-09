@@ -3,6 +3,7 @@ import { Game } from "./game.js";
 document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById("start-button");
   const resetHistoryButton = document.getElementById('reset-history-button');
+  const undoButton = document.getElementById('undo-button');
 
   startButton.addEventListener("click", () => {
     const rows = parseInt(document.getElementById("rows").value, 10);
@@ -22,12 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
       startButton.style.display = "none";
 
       document.getElementById("board").style.display = "table";
+      undoButton.style.display = "block";
     }
   });
 
   resetHistoryButton.addEventListener('click', () => {
     if (window.game) {
-        window.game.resetGameHistory();
+      window.game.resetGameHistory();
+    }
+  });
+
+  undoButton.addEventListener('click', () => {
+    if (window.game) {
+      window.game.undoLastMove();
     }
   });
 });
