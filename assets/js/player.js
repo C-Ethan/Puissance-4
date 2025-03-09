@@ -1,7 +1,8 @@
 export class Player {
-  constructor(id, color) {
+  constructor(id, color, name) {
     this.id = id;
     this.color = color;
+    this.name = name;
   }
 
   updateColor(newColor) {
