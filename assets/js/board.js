@@ -144,14 +144,12 @@ export class Board {
     const winnerMessage = document.getElementById("winner-message");
     if (winnerName) {
       winnerMessage.innerText = `Félicitations, ${winnerName} a gagné !`;
+      this.game.recordGameResult(winnerName);
     } else {
       winnerMessage.innerText = "Match nul !";
+      this.game.recordGameResult(null);
     }
     gameOverScreen.style.display = "block";
-
-    if (winnerName) {
-      this.game.recordGameResult(winnerName);
-    }
 
     document.getElementById("restart-button").addEventListener("click", () => {
       this.game.restartGame();
