@@ -181,3 +181,20 @@ td:hover {
 #reset-history-button:hover {
   background-color: #e67e22;
 }
+
+#undo-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+}
+
+#undo-button:hover {
+  background-color: #c0392b;
+}
