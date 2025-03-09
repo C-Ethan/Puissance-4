@@ -35,6 +35,8 @@ export class Board {
       console.log("Updated Grid:", this.grid);
       if (this.checkForWin(playerId)) {
           this.showGameOver(this.game.getCurrentPlayer().name);
+      } else if (this.isBoardFull()) {
+          this.showGameOver(null);
       } else {
           this.game.switchPlayer();
       }
@@ -128,13 +130,28 @@ export class Board {
     return false;
   }
 
+  isBoardFull() {
+    for (let c = 0; c < this.cols; c++) {
+      if (this.grid[0][c] === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   showGameOver(winnerName) {
     const gameOverScreen = document.getElementById("game-over");
     const winnerMessage = document.getElementById("winner-message");
-    winnerMessage.innerText = `Félicitations, ${winnerName} a gagné !`;
+    if (winnerName) {
+      winnerMessage.innerText = `Félicitations, ${winnerName} a gagné !`;
+    } else {
+      winnerMessage.innerText = "Match nul !";
+    }
     gameOverScreen.style.display = "block";
 
-    this.game.recordGameResult(winnerName);
+    if (winnerName) {
+      this.game.recordGameResult(winnerName);
+    }
 
     document.getElementById("restart-button").addEventListener("click", () => {
       this.game.restartGame();
