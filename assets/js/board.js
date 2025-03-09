@@ -125,6 +125,8 @@ export class Board {
     winnerMessage.innerText = `Félicitations, ${winnerName} a gagné !`;
     gameOverScreen.style.display = "block";
 
+    this.game.recordGameResult(winnerName);
+
     document.getElementById("restart-button").addEventListener("click", () => {
       this.game.restartGame();
       gameOverScreen.style.display = "none";

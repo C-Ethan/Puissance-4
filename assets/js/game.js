@@ -9,6 +9,7 @@ export class Game {
       new Player(2, player2Color, player2Name),
     ];
     this.currentPlayerIndex = 0;
+    this.gameHistory = [];
   }
 
   init() {
@@ -37,5 +38,22 @@ export class Game {
     this.board.grid = this.board.createGrid();
     this.board.drawBoard();
     this.updateStatus();
+  }
+
+  recordGameResult(winnerName) {
+    this.gameHistory.push({winner : winnerName});
+    this.displayGameHistory();
+  }
+
+  displayGameHistory() {
+    const historyDiv = document.getElementById("game-history");
+    if (historyDiv) {
+      historyDiv.innerHTML = '<h3>Historique des parties :</h3>';
+      this.gameHistory.forEach((result, index) => {
+        const resultElement = document.createElement('p');
+        resultElement.innerText = `Partie ${index + 1}: Gagné par : ${result.winner}`;
+        historyDiv.appendChild(resultElement);
+      });
+    }
   }
 }
