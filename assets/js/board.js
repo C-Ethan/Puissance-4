@@ -47,14 +47,14 @@ export class Board {
     for (let r = this.rows - 1; r >= 0; r--) {
       if (this.grid[r][col] === 0) {
           this.grid[r][col] = playerId;
-          this.updateBoard();
+          this.updateBoard(col, r, playerId);
           return true;
       }
     }
     return false;
   }
 
-  updateBoard() {
+  updateBoard(lastCol = null, lastRow = null, playerId = null) {
     const boardTable = document.getElementById("board");
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
@@ -70,6 +70,14 @@ export class Board {
             cell.style.backgroundColor = this.game.players[1].color;
         }
       }
+    }
+
+    if (lastCol !== null && lastRow !== null && playerId !== null) {
+      const cell = boardTable.rows[lastRow].cells[lastCol];
+      cell.classList.add("token-animation");
+      setTimeout(() => {
+        cell.classList.remove("token-animation");
+      }, 500);
     }
   }
 
